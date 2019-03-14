@@ -7,7 +7,6 @@
 
 #include <stdio.h>
 #include <time.h>
-#include <malloc.h>
 
 
 #define LOG_NAME "GameLife.log"

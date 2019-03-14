@@ -30,7 +30,7 @@ int putLog(const char* _msg, unsigned short int _level)
         printf("error in log[put]:%s\n", _msg);
         return 1;
     }
-     fprintf(log.f,"%s",_msg);
+    fprintf(log.f,"[%i] - %s",_level,_msg);
     return 0;
 }
 
@@ -43,4 +43,5 @@ int stopLog()
     putLog("Finished logging\n",0);
     fclose(log.f);
     log.level = 0;
+    return 0;
 }
