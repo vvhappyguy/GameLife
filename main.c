@@ -2,11 +2,12 @@
 #include <stdlib.h>
 #include "main.h"
 #include "logging.h"
+#include "game.h"
 #include <time.h>
 
-int setup()
+int setup(size_t _level)
 {
-    initLog(0);
+    initLog(_level);
     putLog("SETUP:\n",0);
 
     putLog("\n",0);
@@ -16,9 +17,13 @@ int setup()
 
 int main()
 {
-    if(setup() != 0)
+    if(setup(3) != 0)
         exit(1);
 
+    Game* game = initGame(3);
+    randomMap(game);
+    simpleShow(game);
+    endGame(game);
     stopLog();
     return 0;
 }
