@@ -80,3 +80,21 @@ void simpleShow(Game* _game)
     printf("\n");
 };
 
+bool saveGame(Game* _game, const char* _filename)
+{
+    if(_game == NULL)
+        return 0;
+    putLog("saveGame to ",1);
+    putLog(_filename, 1);
+    FILE* fileHandle;
+    fileHandle = fopen(_filename, "w");
+
+    fprintf(fileHandle,"%d",_game->size*_game->size);
+    for (int i = 0; i < _game->size; i++)
+        for (int j = 0; j < _game->size; j++)
+            fprintf(fileHandle," %d",_game->map[i][j]);
+
+    fclose(fileHandle);
+    return 1;
+};
+

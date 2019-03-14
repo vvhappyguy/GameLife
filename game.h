@@ -18,5 +18,6 @@ void randomMap(Game* _game);
 bool endGame(Game* _game);
 void simpleShow(Game* _game);
 
+bool saveGame(Game* _game, const char* _filename);
 
 #endif //GAMELIFE_GAME_H

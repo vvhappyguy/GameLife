@@ -23,6 +23,7 @@ int main()
     Game* game = initGame(3);
     randomMap(game);
     simpleShow(game);
+    saveGame(game,"1.template");
     endGame(game);
     stopLog();
     return 0;
