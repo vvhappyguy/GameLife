@@ -7,6 +7,10 @@
 
 #include <stdbool.h>
 #include <stddef.h>
+#include <malloc.h>
+#include <time.h>
+#include <math.h>
+#include "logging.h"
 
 typedef struct GameLogic{
     bool** map;
@@ -19,5 +23,7 @@ bool endGame(Game* _game);
 void simpleShow(Game* _game);
 
 bool saveGame(Game* _game, const char* _filename);
+bool loadGame(Game* _game, const char* _filename);
+
 
 #endif //GAMELIFE_GAME_H

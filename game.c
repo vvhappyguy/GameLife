@@ -2,10 +2,7 @@
 // Created by dyaki on 3/14/2019.
 //
 
-#include <malloc.h>
-#include <time.h>
 #include "game.h"
-#include "logging.h"
 
 Game* initGame(size_t _size)
 {
@@ -89,12 +86,39 @@ bool saveGame(Game* _game, const char* _filename)
     FILE* fileHandle;
     fileHandle = fopen(_filename, "w");
 
-    fprintf(fileHandle,"%d",_game->size*_game->size);
+    fprintf(fileHandle,"%d\n",_game->size*_game->size);
     for (int i = 0; i < _game->size; i++)
         for (int j = 0; j < _game->size; j++)
-            fprintf(fileHandle," %d",_game->map[i][j]);
+            fprintf(fileHandle,"%d\n",_game->map[i][j]);
 
     fclose(fileHandle);
+    return 1;
+};
+
+bool loadGame(Game* _game, const char* _filename)
+{
+    putLog("loadGame from ",1);
+    putLog(_filename,1);
+    if(_game == NULL)
+        return 0;
+    FILE* fileHandle;
+    fileHandle = fopen(_filename,"r");
+    size_t sizeF;
+    fscanf(fileHandle,"%d",&sizeF);
+    if((int)sqrt(sizeF) != _game->size)
+        return 0;
+
+    char buf[10];
+
+    size_t i = 0;
+    fgets(buf,10, fileHandle);
+    while (fgets(buf,10, fileHandle)!=NULL)
+    {
+        _game->map[(int)(i/_game->size)][i%_game->size] = buf[0]%2;
+        i++;
+    }
+    fclose(fileHandle);
+
     return 1;
 };
 
