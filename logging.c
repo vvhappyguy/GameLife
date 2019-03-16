@@ -6,13 +6,13 @@
 
 int initLog(unsigned short int _level)
 {
-    if(!log.f)
-        log.f = fopen(LOG_NAME, "a");
-    if(!log.f) {
+    if(!logGame.f)
+        logGame.f = fopen(LOG_NAME, "a");
+    if(!logGame.f) {
         printf("error in log[initLog]: %s\n",LOG_NAME);
         return 1;
     }
-    log.level = _level;
+    logGame.level = _level;
     const time_t timer = time(NULL);
     char tmp[50];
     sprintf(tmp,"Start Logging to file: %s with level: %d\n",LOG_NAME, _level);
@@ -24,24 +24,24 @@ int initLog(unsigned short int _level)
 
 int putLog(const char* _msg, unsigned short int _level)
 {
-    if(_level > log.level)
+    if(_level > logGame.level)
         return 0;
-    if(!log.f) {
+    if(!logGame.f) {
         printf("error in log[put]:%s\n", _msg);
         return 1;
     }
-    fprintf(log.f,"[%i] - %s",_level,_msg);
+    fprintf(logGame.f,"[%i] - %s",_level,_msg);
     return 0;
 }
 
 int stopLog()
 {
-    if(!log.f) {
+    if(!logGame.f) {
         printf("error ing log - bad handler\n");
         return 1;
     }
     putLog("Finished logging\n",0);
-    fclose(log.f);
-    log.level = 0;
+    fclose(logGame.f);
+    logGame.level = 0;
     return 0;
 }
