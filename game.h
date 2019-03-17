@@ -10,6 +10,7 @@
 #include <malloc.h>
 #include <time.h>
 #include <math.h>
+#include <mem.h>
 #include "logging.h"
 
 typedef struct GameLogic{
