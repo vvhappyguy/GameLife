@@ -13,8 +13,8 @@
 // TODO include graphic lib here
 #endif
 
-#define LIFE_SYM '1'
-#define DIED_SYM '0'
+#define LIFE_SYM 178
+#define DIED_SYM 177
 
 bool setupInterface(Game* _game);
 void updateMap(Game* _game);

@@ -9,35 +9,30 @@
 // Clear console, try to show map by Game->size
 bool setupInterface(Game* _game)
 {
-    for(unsigned short int i = 0; i < _game->size; i++)
-    {
-        for(unsigned short int j = 0; i < _game->size; j++)
-            printf(" ");
-        printf("\n");
-    }
+    // TODO Here must be setting of size console window
 };
 
 void updateMap(Game* _game)
 {
     if(_game == NULL)
         return;
-    // TODO Clear console here
+    clearMap();
     for(unsigned short int i = 0; i < _game->size; i++)
     {
         for(unsigned short int j = 0; j < _game->size; j++)
         {
             if(_game->map[i][j] == 1)
-                printf("%c",LIFE_SYM);
+                printf("%c%c",(char)LIFE_SYM,(char)LIFE_SYM);
             else
-                printf("%c",DIED_SYM);
+                printf("%c%c",(char)DIED_SYM,(char)DIED_SYM);
         }
         printf("\n");
     }
 };
 
-void clear()
+void clearMap()
 {
-    // TODO Write clear function
+    system("cls");
 };
 
 #else
