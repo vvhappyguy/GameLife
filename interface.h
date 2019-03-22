@@ -13,16 +13,12 @@
 // TODO include graphic lib here
 #endif
 
+#define LIFE_SYM '1'
+#define DIED_SYM '0'
+
 bool setupInterface(Game* _game);
-
-bool setBlockTrue(Game* _game, unsigned short int _i,unsigned short int _j);
-bool setBlockFalse(Game* _game, unsigned short int _i,unsigned short int _j);
-
 void updateMap(Game* _game);
-
-bool loadFromGame(Game* _game);
-
-void clearMap(Game* _game, unsigned short int _i,unsigned short int _j);
+void clearMap();
 
 
 #endif //GAMELIFE_INTERFACE_H

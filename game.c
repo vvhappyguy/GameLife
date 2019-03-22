@@ -59,21 +59,6 @@ bool endGame(Game *_game) {
     return true;
 };
 
-void simpleShow(Game *_game) {
-    if (_game == NULL) {
-        putLog("ERROR - _game is NULL - Failed\n", 1);
-        return;
-    }
-
-    printf("SHOW SIMPLE GAME[%d]\n", _game->size);
-    for (size_t i = 0; i < _game->size; i++) {
-        printf("\n");
-        for (size_t j = 0; j < _game->size; j++)
-            printf("%d", _game->map[i][j]);
-    }
-    printf("\n");
-};
-
 bool saveGame(Game *_game, const char *_filename) {
     if ((strlen(_filename) == 0) || (!_game)) {
         char *errorLog = (char *) malloc(sizeof(char) * 256);
