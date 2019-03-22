@@ -19,10 +19,12 @@ bool setupInterface(Game* _game)
 
 void updateMap(Game* _game)
 {
+    if(_game == NULL)
+        return;
     // TODO Clear console here
     for(unsigned short int i = 0; i < _game->size; i++)
     {
-        for(unsigned short int j = 0; i < _game->size; j++)
+        for(unsigned short int j = 0; j < _game->size; j++)
         {
             if(_game->map[i][j] == 1)
                 printf("%c",LIFE_SYM);

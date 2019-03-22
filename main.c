@@ -4,6 +4,7 @@
 #include "logging.h"
 #include "game.h"
 #include <time.h>
+#include "interface.h"
 
 int setup(size_t _level)
 {
@@ -23,7 +24,7 @@ int main()
     printf("\n\nGAME1:\n");
     Game* game = initGame(5);
     randomMap(game);
-    simpleShow(game);
+    updateMap(game);
     saveGame(game,"1.template");
     endGame(game);
 
@@ -31,9 +32,11 @@ int main()
 
     Game* game2 = initGame(5);
     loadGame(game2,"1.template");
-    simpleShow(game2);
+    updateMap(game2);
     endGame(game2);
 
     stopLog();
+
+    system("pause");
     return 0;
 }
