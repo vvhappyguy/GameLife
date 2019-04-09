@@ -3,4 +3,4 @@ project(GameLife C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable(GameLife main.c main.h logging.c logging.h game.h game.c interface.c interface.h)
+add_executable(GameLife main.c main.h logging.c logging.h game.h game.c interface.c interface.h logic.c logic.h)
