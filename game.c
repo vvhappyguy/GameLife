@@ -23,7 +23,7 @@ Game *initGame(size_t _size) {
         for (size_t j = 0; j < _size; j++)
             _game->map[i][j] = 0;
 
-    putLog("Successfully\n", 0);
+    putLog("Successfully\n", 2);
     return _game;
 };
 
@@ -45,7 +45,7 @@ void randomMap(Game *_game) {
 }
 
 bool endGame(Game *_game) {
-    putLog("endGame\n", 1);
+    putLog("endGame\n", 2);
     if (_game == NULL) {
         putLog("ERROR - Failed endGame - bad argument\n", 0);
         return false;
@@ -55,7 +55,7 @@ bool endGame(Game *_game) {
         free(_game->map[i]);
     free(_game->map);
     free(_game);
-    putLog("Successfully endGame\n", 1);
+    putLog("Successfully endGame\n", 2);
     return true;
 };
 
@@ -128,12 +128,12 @@ bool copyGame(Game *_to, Game *_from)
 {
     if(_to == NULL || _from == NULL)
     {
-        // TODO err msg to log
+        putLog("ERROR - copyGame arguments aren't valid\n",1);
         return false;
     }
     if(_to->size != _from->size)
     {
-        // TODO err msg to log
+        putLog("ERROR - copyGame size of _to not equal size of _from.\n",1);
         return false;
     }
 
@@ -143,6 +143,7 @@ bool copyGame(Game *_to, Game *_from)
         for(size_t j = 0; j < size; j++)
             _to->map[i][j] = _from->map[i][j];
 
+    putLog("Completed copyGame.\n",2);
     return true;
 };
 
