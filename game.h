@@ -19,7 +19,7 @@ typedef struct GameLogic{
 } Game;
 
 Game* initGame(size_t _size);
-void randomMap(Game* _game);
+bool randomMap(Game* _game);
 bool endGame(Game* _game);
 
 bool saveGame(Game* _game, const char* _filename);

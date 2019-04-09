@@ -27,11 +27,11 @@ Game *initGame(size_t _size) {
     return _game;
 };
 
-void randomMap(Game *_game) {
+bool randomMap(Game *_game) {
     putLog("Randomise map\n", 2);
     if (_game == NULL) {
         putLog("ERROR - Failed randomMap - bad argument\n", 0);
-        return;
+        return false;
     }
 
     srand(time(NULL));   // Initialization, should only be called once.
@@ -41,7 +41,7 @@ void randomMap(Game *_game) {
             _game->map[i][j] = rand() % 2;
 
     putLog("Random successfully\n", 2);
-    return;
+    return true;
 }
 
 bool endGame(Game *_game) {
