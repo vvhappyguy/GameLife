@@ -124,3 +124,25 @@ bool loadGame(Game *_game, const char *_filename) {
     return true;
 };
 
+bool copyGame(Game *_to, Game *_from)
+{
+    if(_to == NULL || _from == NULL)
+    {
+        // TODO err msg to log
+        return false;
+    }
+    if(_to->size != _from->size)
+    {
+        // TODO err msg to log
+        return false;
+    }
+
+    size_t size = _from->size;
+
+    for(size_t i = 0; i < size; i++)
+        for(size_t j = 0; j < size; j++)
+            _to->map[i][j] = _from->map[i][j];
+
+    return true;
+};
+

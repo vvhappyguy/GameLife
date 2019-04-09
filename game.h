@@ -21,10 +21,10 @@ typedef struct GameLogic{
 Game* initGame(size_t _size);
 void randomMap(Game* _game);
 bool endGame(Game* _game);
-void simpleShow(Game* _game);
 
 bool saveGame(Game* _game, const char* _filename);
 bool loadGame(Game* _game, const char* _filename);
+bool copyGame(Game *_to, Game *_from);
 
 
 #endif //GAMELIFE_GAME_H
