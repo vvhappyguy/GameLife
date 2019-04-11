@@ -14,8 +14,12 @@ bool setupInterface(Game* _game)
 
 void updateMap(Game* _game)
 {
-    if(_game == NULL)
+    if (_game == NULL) {
+        putLog("ERROR - updateMap argument isn't valid\n", 1);
         return;
+    }
+
+
     clearMap();
     for(unsigned short int i = 0; i < _game->size; i++)
     {
@@ -28,11 +32,13 @@ void updateMap(Game* _game)
         }
         printf("\n");
     }
+    putLog("updateMap successfully.\n", 3);
 };
 
 void clearMap()
 {
     system("cls");
+    putLog("clearMap successfully.\n", 3);
 };
 
 #else

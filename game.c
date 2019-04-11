@@ -30,7 +30,7 @@ Game *initGame(size_t _size) {
 bool randomMap(Game *_game) {
     putLog("Randomise map\n", 2);
     if (_game == NULL) {
-        putLog("ERROR - Failed randomMap - bad argument\n", 0);
+        putLog("ERROR - Failed randomMap - bad argument\n", 1);
         return false;
     }
 
@@ -63,13 +63,13 @@ bool saveGame(Game *_game, const char *_filename) {
     if ((strlen(_filename) == 0) || (!_game)) {
         char *errorLog = (char *) malloc(sizeof(char) * 256);
         sprintf(errorLog, "ERROR - Invalid arguments saveGame(%d, %s).\n", (int) _game, _filename);
-        putLog(errorLog, 0);
+        putLog(errorLog, 1);
         free(errorLog);
         return false;
     }
     char *msgLog = (char *) malloc(sizeof(char) * 256);
     sprintf(msgLog, "Game saving template to %s\n", _filename);
-    putLog(msgLog, 1);
+    putLog(msgLog, 2);
 
     FILE *fileHandle;
     fileHandle = fopen(_filename, "w");
@@ -79,7 +79,7 @@ bool saveGame(Game *_game, const char *_filename) {
         for (int j = 0; j < _game->size; j++)
             fprintf(fileHandle, "%d\n", _game->map[i][j]);
 
-    putLog("Successfully save template from program to file.\n", 1);
+    putLog("Successfully save template from program to file.\n", 2);
     fclose(fileHandle);
     free(msgLog);
     return 1;
@@ -89,13 +89,13 @@ bool loadGame(Game *_game, const char *_filename) {
     if ((strlen(_filename) == 0) || (!_game)) {
         char *errorLog = (char *) malloc(sizeof(char) * 256);
         sprintf(errorLog, "ERROR - Invalid arguments loadGame(%d, %s).\n", (int) _game, _filename);
-        putLog(errorLog, 0);
+        putLog(errorLog, 1);
         free(errorLog);
         return false;
     }
     char *msgLog = (char *) malloc(sizeof(char) * 256);
     sprintf(msgLog, "Game loading template from %s.\n", _filename);
-    putLog(msgLog, 1);
+    putLog(msgLog, 2);
 
     FILE *fileHandle;
     fileHandle = fopen(_filename, "r");
@@ -104,7 +104,7 @@ bool loadGame(Game *_game, const char *_filename) {
     fscanf(fileHandle, "%d", &sizeF);
     if ((int) sqrt(sizeF) != _game->size) {
         sprintf(msgLog, "ERROR - Invalid size from program(%d) or template(%d).\n", _game->size, (int) sqrt(sizeF));
-        putLog(msgLog, 0);
+        putLog(msgLog, 1);
         free(msgLog);
         return false;
     }
