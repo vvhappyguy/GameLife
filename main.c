@@ -1,10 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "main.h"
-#include "logging.h"
-#include "game.h"
-#include <time.h>
-#include "interface.h"
 
 int setup(size_t _level)
 {
@@ -31,8 +25,10 @@ int main()
     printf("\n\nGAME2:\n");
 
     Game* game2 = initGame(5);
-    loadGame(game2,"1.template");
+    loadGame(game2, "1.te"
+                    "mplate");
     updateMap(game2);
+    stepGame(game2);
     endGame(game2);
 
     stopLog();
